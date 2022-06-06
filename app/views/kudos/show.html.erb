@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Kudo</h2>
+<h3>Title</h3>
+<p><%=  @kudo.title %></p>
+<h3>Content</h3>
+<p><%=  @kudo.content%></p>
+<h3>Giver email</h3>
+<p><%=  @kudo.giver.email%></p>
+<h3>Receiver email</h3>
+<p><%=  @kudo.receiver.email%></p>
+
+
+<%= link_to 'Edit', edit_kudo_path(@kudo) %> |
+<%= link_to 'Back', kudos_path %>
