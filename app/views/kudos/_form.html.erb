@@ -11,12 +11,21 @@
     </div>
   <% end %>
 
-  <%= form.label :title, "Title:" %>
-  <%= form.text_field :title %>
-  <%= form.label :content, "Content:" %>
-  <%= form.text_area :content %>
-  <%= form.label :receiver_id, "Reciver:" %>
-  <%= form.text_field :receiver_id %>
+  <div class="field">
+    <%= form.label :title, "Title:" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content, "Content:" %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :receiver_id, "Reciver:" %>
+    <%= form.collection_select :receiver_id, Employee.where.not(email: current_employee.email), :id, :email %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

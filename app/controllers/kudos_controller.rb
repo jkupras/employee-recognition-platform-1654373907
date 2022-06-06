@@ -16,10 +16,10 @@ class KudosController < ApplicationController
 
   def create
     @kudo = Kudo.new(kudo_params)
-    @kudo.giver_id = current_employee.id
+    @kudo.giver = current_employee
 
     if @kudo.save
-      redirect_to action: 'index', notice: 'Kudo was successfully created.'
+      redirect_to kudos_path, notice: 'Kudo was successfully created.'
     else
       render :new
     end
