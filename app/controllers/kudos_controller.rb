@@ -1,5 +1,6 @@
 class KudosController < ApplicationController
   before_action :set_kudo, only: %i[show edit update destroy]
+  before_action :require_permission, only: %i[edit update destroy]
 
   def index
     @kudos = Kudo.all
@@ -46,5 +47,11 @@ class KudosController < ApplicationController
 
   def kudo_params
     params.require(:kudo).permit(:title, :content, :receiver_id)
+  end
+
+  def require_permission
+    return if @kudo.giver == current_employee
+
+    redirect_to kudos_path, notice: 'You do not have permission to do that.'
   end
 end
