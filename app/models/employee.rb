@@ -5,7 +5,11 @@ class Employee < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :giver_kudos, class_name: 'Kudo',
-                         foreign_key: 'giver_id'
+                         foreign_key: 'giver_id',
+                         dependent: :destroy,
+                         inverse_of: :employee
   has_many :receiver_kudos, class_name: 'Kudo',
-                            foreign_key: 'receiver_id'
+                            foreign_key: 'receiver_id',
+                            dependent: :destroy,
+                            inverse_of: :employee
 end
