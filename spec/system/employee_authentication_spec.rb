@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'the signup and signin process', type: :feature do
+RSpec.describe 'the signup and signin process', type: :system do
   let(:employee) { build(:employee) }
 
   it 'signs me in' do
