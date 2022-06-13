@@ -14,3 +14,5 @@
 5.times do
 Kudo.create!(title: Faker::Beer.brand, content: Faker::Lorem.sentences(number: 1), giver_id: Employee.first.id, receiver_id: Employee.last.id)
 end
+
+Admin.create!(email: 'admin@admin.com', password: 'password')

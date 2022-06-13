@@ -19,6 +19,7 @@ RSpec.describe 'the signup and signin process', type: :system do
     fill_in 'Email', with: employee.email
     fill_in 'Password', with: employee.password
     click_button 'Log in'
-    expect(page).to have_content 'Signed in successfully'
+    expect(page).to have_content 'Log out'
+    expect(page).to have_content 'Title'
   end
 end

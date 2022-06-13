@@ -1,8 +1,33 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :admins, path: 'admins', controllers: {
+    sessions: 'admins/sessions',
+    registrations: 'admins/registrations'
+  }
+  devise_for :employees, path: 'employees', controllers: {
+    sessions: 'employees/sessions',
+    registrations: 'employees/registrations'
+  }
+
+  # devise_scope :employee do
+  #   authenticated :employee do
+  #     namespace :employees do
+  #       get 'kudos/index', as: :authenticated_root
+  #     end
+  #   end
+  # end
+
+  devise_scope :admin do
+    get "admins", to: "devise/sessions#new"
+    authenticated :admin do
+      namespace :admins do
+        get 'pages/dashboard', as: :authenticated_root
+      end
+    end
+  end
+
   resources :kudos
-  devise_for :employees
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'kudos#index'
+
 end
