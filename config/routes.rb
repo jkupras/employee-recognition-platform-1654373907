@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get "admins", to: "devise/sessions#new"
     authenticated :admin do
       namespace :admins do
+        resources :kudos
         get 'pages/dashboard', as: :authenticated_root
       end
     end
