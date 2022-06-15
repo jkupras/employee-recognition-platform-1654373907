@@ -35,5 +35,8 @@
 </table>
 
 <br>
-
-<%= link_to 'New Kudo', new_kudo_path %>
+<% if current_employee.number_of_available_kudos > 0 %>
+  <%= link_to 'New Kudo', new_kudo_path %>
+<% else %>
+<p>You don't have any available kudos to give</p>
+<% end %>

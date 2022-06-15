@@ -20,6 +20,7 @@
       <h4>Navigation</h4>
       <ul>
         <% if employee_signed_in? %>
+          <li><%="The number of available kudos is #{current_employee.number_of_available_kudos}"%></li>
           <li><%= link_to 'Log out', destroy_employee_session_path, method: :delete %></li>
         <% elsif admin_signed_in?%>
           <li><%= link_to 'Log out', destroy_admin_session_path, method: :delete %></li>

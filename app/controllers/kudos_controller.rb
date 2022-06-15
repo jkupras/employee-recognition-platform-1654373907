@@ -4,14 +4,13 @@ class KudosController < ApplicationController
   before_action :require_permission, only: %i[edit update destroy]
 
   def index
-    @kudos = Kudo.all
+    @kudos = Kudo.all.includes(:giver, :receiver)
   end
 
   def show; end
 
   def new
     @kudo = Kudo.new
-    @emails = Employee.pluck(:email)
   end
 
   def edit; end
@@ -19,10 +18,11 @@ class KudosController < ApplicationController
   def create
     @kudo = Kudo.new(kudo_params)
     @kudo.giver = current_employee
-
     if @kudo.save
+
       redirect_to kudos_path, notice: 'Kudo was successfully created.'
     else
+
       render :new
     end
   end
