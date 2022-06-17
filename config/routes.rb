@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     authenticated :admin do
       namespace :admins do
         resources :kudos
+        resources :employees
         get 'pages/dashboard', as: :authenticated_root
       end
     end
