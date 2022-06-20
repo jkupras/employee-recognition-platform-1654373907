@@ -10,20 +10,13 @@ Rails.application.routes.draw do
     registrations: 'employees/registrations'
   }
 
-  # devise_scope :employee do
-  #   authenticated :employee do
-  #     namespace :employees do
-  #       get 'kudos/index', as: :authenticated_root
-  #     end
-  #   end
-  # end
-
   devise_scope :admin do
     get "admins", to: "devise/sessions#new"
     authenticated :admin do
       namespace :admins do
         resources :kudos
         resources :employees
+        resources :company_values
         get 'pages/dashboard', as: :authenticated_root
       end
     end

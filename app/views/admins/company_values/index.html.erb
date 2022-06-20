@@ -1,0 +1,20 @@
+<h1>Employees</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @company_values.each do |company_value| %>
+      <tr>
+        <td><%=  company_value.title %></td>
+        <td><%= link_to 'Edit', edit_admins_company_value_path(company_value) %></td>
+        <td><%= link_to 'Destroy', admins_company_value_path(company_value), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New company value', new_admins_company_value_path %>
