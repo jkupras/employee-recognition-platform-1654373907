@@ -10,7 +10,7 @@ RSpec.describe 'the admin listing and deleting', type: :system do
 
   it 'listing kudos' do
     visit admins_authenticated_root_path
-    click_link 'All Kudos list'
+    click_link 'Kudos'
     expect(page).to have_content 'Log out'
     expect(page).to have_content 'Kudos'
     expect(page).to have_content 'Title'
@@ -23,7 +23,7 @@ RSpec.describe 'the admin listing and deleting', type: :system do
 
   it 'deleting kudos' do
     visit admins_authenticated_root_path
-    click_link 'All Kudos list'
+    click_link 'Kudos'
     click_link 'Destroy', match: :first
     expect(page).to have_content 'Kudo was successfully destroyed.'
   end

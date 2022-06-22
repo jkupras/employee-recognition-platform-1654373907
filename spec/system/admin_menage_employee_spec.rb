@@ -10,7 +10,7 @@ RSpec.describe 'admin menage employee', type: :system do
 
   it 'listing employee' do
     visit admins_authenticated_root_path
-    click_link 'Employees list'
+    click_link 'Employees'
     expect(page).to have_content 'Email'
     expect(page).to have_content 'Number of available kudos'
     expect(page).to have_content employee.email
@@ -22,7 +22,7 @@ RSpec.describe 'admin menage employee', type: :system do
   context 'when editing employee' do
     it 'work with password change' do
       visit admins_authenticated_root_path
-      click_link 'Employees list'
+      click_link 'Employees'
       click_link 'Edit'
       expect(page).to have_field('Email', with: employee.email)
       expect(page).to have_content 'Password'
@@ -39,7 +39,7 @@ RSpec.describe 'admin menage employee', type: :system do
 
     it 'work without password change' do
       visit admins_authenticated_root_path
-      click_link 'Employees list'
+      click_link 'Employees'
       click_link 'Edit'
       fill_in 'Email', with: 'new2@email.com'
       fill_in 'Number of available kudos', with: 2
@@ -50,7 +50,7 @@ RSpec.describe 'admin menage employee', type: :system do
 
   it 'deleting employee' do
     visit admins_authenticated_root_path
-    click_link 'Employees list'
+    click_link 'Employees'
     click_link 'Destroy', match: :first
     expect(page).to have_content 'Employee was successfully destroyed.'
   end
