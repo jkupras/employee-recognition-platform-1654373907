@@ -20,7 +20,6 @@ RSpec.describe 'the admin listing and deleting', type: :system do
     expect(page).to have_content 'Company Value'
     expect(page).to have_content kudo.company_value.title
 
-
     expect(page).to have_link 'Show'
     expect(page).to have_link 'Destroy'
   end
