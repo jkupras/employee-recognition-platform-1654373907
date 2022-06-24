@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :company_value do
-    title { 'MyString' }
+    sequence :title do |n|
+      "Company Value Title#{n}"
+    end
   end
 end
