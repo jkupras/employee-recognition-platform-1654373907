@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :admin do
-    get "admins", to: "devise/sessions#new"
+    get 'admins', to: 'admins/sessions#new'
     authenticated :admin do
       namespace :admins do
         resources :kudos

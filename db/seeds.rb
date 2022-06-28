@@ -5,15 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-1.upto(5) { |i| Employee.create(email: "test#{i}@test.com", password: 'password') }
+1.upto(5) { |i| Employee.create!(email: "test#{i}@test.com", password: 'password') }
 
-5.times do
-Kudo.create(title: Faker::Beer.brand, content: Faker::Lorem.sentences(number: 1), giver_id: Employee.first.id, receiver_id: Employee.last.id)
+%w[Honesty Ownership Accountability Passion].each do |title|
+  CompanyValue.create!(title: title)
 end
 
-Admin.create(email: 'admin@admin.com', password: 'password')
+5.times do
+Kudo.create!(title: Faker::Beer.brand,
+             content: Faker::Lorem.sentences(number: 1),
+             giver_id: Employee.first.id,
+             receiver_id: Employee.last.id,
+             company_value_id: CompanyValue.last.id)
+end
 
-CompanyValue.create(title: 'Honesty')
-CompanyValue.create(title: 'Ownership')
-CompanyValue.create(title: 'Accountability')
-CompanyValue.create(title: 'Passion')
+Admin.create!(email: 'admin@admin.com', password: 'password')
+

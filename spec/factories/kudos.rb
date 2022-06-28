@@ -4,5 +4,6 @@ FactoryBot.define do
     content { Faker::Lorem.sentences(number: 1) }
     giver factory: :employee
     receiver factory: :employee
+    company_value
   end
 end
