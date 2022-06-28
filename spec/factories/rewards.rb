@@ -1,7 +1,13 @@
 FactoryBot.define do
   factory :reward do
-    title { 'Book' }
-    description { "'Życie i śmierć na Drodze Umarłych' autor Tomasz Grzywaczewski " }
-    price { 29.99 }
+    sequence :title do |n|
+      "book#{n}"
+    end
+    sequence :description do |n|
+      "description for book number #{n}"
+    end
+    sequence :price do |n|
+      n + 1.99
+    end
   end
 end
