@@ -16,7 +16,7 @@ RSpec.describe 'kudo spending', type: :system do
     fill_in 'Title', with: kudo.title
     fill_in 'Content', with: kudo.content
     select employee_nr_2.email, from: 'kudo_receiver_id'
-    select employee.giver_kudos.last.company_value.title, from: 'kudo_company_value_id'
+    select CompanyValue.last.title, from: 'kudo_company_value_id'
     click_button 'Create Kudo'
     expect(page).to have_content 'Kudo was successfully created.'
     expect(page).to have_content kudo.title
