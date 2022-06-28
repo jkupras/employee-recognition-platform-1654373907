@@ -12,12 +12,15 @@
 end
 
 5.times do
-Kudo.create!(title: Faker::Beer.brand,
-             content: Faker::Lorem.sentences(number: 1),
-             giver_id: Employee.first.id,
-             receiver_id: Employee.last.id,
-             company_value_id: CompanyValue.last.id)
+  Kudo.create!(title: Faker::Beer.brand,
+               content: Faker::Lorem.sentences(number: 1),
+               giver_id: Employee.first.id,
+               receiver_id: Employee.last.id,
+               company_value_id: CompanyValue.last.id)
+
+  Reward.create!(title: Faker::Food.fruits,
+                 description: Faker::Lorem.sentences(number: 1),
+                 price: Faker::Commerce.price(range: 1..10.0))
 end
 
 Admin.create!(email: 'admin@admin.com', password: 'password')
-
