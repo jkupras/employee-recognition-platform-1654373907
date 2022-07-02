@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         resources :kudos
         resources :employees
         resources :company_values
+        resources :rewards
         get 'pages/dashboard', as: :authenticated_root
       end
     end
