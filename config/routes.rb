@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :kudos
+  resources :rewards, only: [:index, :show]
   root 'kudos#index'
 
 end
