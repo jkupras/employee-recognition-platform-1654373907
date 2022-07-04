@@ -1,0 +1,22 @@
+<h1>Rewards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reward.each do |reward| %>
+      <tr>
+        <td><%=  reward.title %></td>
+        <td><%=  reward.price %></td>
+        <td><%= link_to 'Show', reward_path(reward) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Back', rewards_path %>
