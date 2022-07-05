@@ -21,6 +21,16 @@ class Employee < ApplicationRecord
     errors.add(:number_of_available_kudos, 'there are no available kudos to give')
   end
 
+  def reduce_number_of_available_kudos
+    self.number_of_available_kudos -= 1
+    save!
+  end
+
+  def increase_number_of_available_kudos
+    self.number_of_available_kudos += 1
+    save!
+  end
+
   def reduce_number_of_available_points
     self.number_of_available_points -= 1
     save!
