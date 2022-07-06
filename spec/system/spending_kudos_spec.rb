@@ -39,4 +39,28 @@ RSpec.describe 'kudo spending', type: :system do
     expect(page).to have_content '1 error prohibited this kudo from being saved'
     expect(page).to have_content 'Number of available kudos there are no available kudos to give'
   end
+
+  it 'increase number of points available for kudo receiver' do
+    visit new_kudo_path
+    fill_in 'Title', with: kudo.title
+    fill_in 'Content', with: kudo.content
+    select employee_nr_2.email, from: 'kudo_receiver_id'
+    select CompanyValue.last.title, from: 'kudo_company_value_id'
+    click_button 'Create Kudo'
+    expect(Kudo.last.receiver.number_of_available_points).to eq 1
+  end
+
+  it 'delete kudo reduce number of points available for kudo receiver' do
+    create(:kudo)
+    visit new_kudo_path
+    fill_in 'Title', with: kudo.title
+    fill_in 'Content', with: kudo.content
+    select employee_nr_2.email, from: 'kudo_receiver_id'
+    select CompanyValue.last.title, from: 'kudo_company_value_id'
+    click_button 'Create Kudo'
+    expect(Kudo.last.receiver.number_of_available_points).to eq 1
+    visit root_path
+    click_link 'Destroy', match: :first
+    expect(Kudo.last.receiver.number_of_available_points).to eq 0
+  end
 end
