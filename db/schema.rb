@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2022_07_04_130218) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "number_of_available_kudos", default: 10, null: false
-    t.decimal "number_of_available_points", precision: 8, scale: 2, default: "0.0", null: false
+    t.decimal "available_points", precision: 8, scale: 2, default: "0.0", null: false
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end

@@ -47,7 +47,7 @@ RSpec.describe 'kudo spending', type: :system do
     select employee_nr_2.email, from: 'kudo_receiver_id'
     select CompanyValue.last.title, from: 'kudo_company_value_id'
     click_button 'Create Kudo'
-    expect(Kudo.last.receiver.number_of_available_points).to eq 1
+    expect(Kudo.last.receiver.available_points).to eq 1
   end
 
   it 'delete kudo reduce number of points available for kudo receiver' do
@@ -58,9 +58,9 @@ RSpec.describe 'kudo spending', type: :system do
     select employee_nr_2.email, from: 'kudo_receiver_id'
     select CompanyValue.last.title, from: 'kudo_company_value_id'
     click_button 'Create Kudo'
-    expect(Kudo.last.receiver.number_of_available_points).to eq 1
+    expect(Kudo.last.receiver.available_points).to eq 1
     visit root_path
     click_link 'Destroy', match: :first
-    expect(Kudo.last.receiver.number_of_available_points).to eq 0
+    expect(Kudo.last.receiver.available_points).to eq 0
   end
 end
