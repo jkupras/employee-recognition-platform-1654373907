@@ -18,17 +18,21 @@ class KudosController < ApplicationController
   def create
     @kudo = Kudo.new(kudo_params)
     @kudo.giver = current_employee
+    @kudo.giver.number_of_available_kudos -= 1
     if @kudo.save
-
+      @kudo.giver.save!
+      @kudo.receiver.increase_number_of_available_points
       redirect_to kudos_path, notice: 'Kudo was successfully created.'
     else
-
       render :new
     end
   end
 
   def update
+    old_receiver = @kudo.receiver
     if @kudo.update(kudo_params)
+      old_receiver.reduce_number_of_available_points
+      @kudo.receiver.increase_number_of_available_points
       redirect_to @kudo, notice: 'Kudo was successfully updated.'
     else
       render :edit
@@ -36,6 +40,8 @@ class KudosController < ApplicationController
   end
 
   def destroy
+    @kudo.giver.increase_number_of_available_kudos
+    @kudo.receiver.reduce_number_of_available_points
     @kudo.destroy
     redirect_to kudos_url, notice: 'Kudo was successfully destroyed.'
   end
