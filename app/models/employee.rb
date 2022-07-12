@@ -14,6 +14,7 @@ class Employee < ApplicationRecord
                             foreign_key: 'receiver_id',
                             dependent: :destroy,
                             inverse_of: :receiver
+  has_many :orders, dependent: :destroy
 
   def number_of_available_kudos_cannot_be_less_then_zero
     return unless number_of_available_kudos.negative?
