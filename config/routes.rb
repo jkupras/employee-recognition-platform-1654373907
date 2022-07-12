@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   resources :kudos
   resources :rewards, only: [:index, :show]
+  post 'order', to: 'orders#create'
   root 'kudos#index'
 
 end
