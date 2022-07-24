@@ -15,6 +15,10 @@ class OrdersController < ApplicationController
     end
   end
 
+  def my_rewards
+    @my_rewards = current_employee.orders.includes(:reward)
+  end
+
   private
 
   def order_params

@@ -15,7 +15,6 @@
         <td><%=  reward.price %></td>
         <td><%= link_to 'Show', reward_path(reward) %></td>
         <td><%= link_to 'Buy', order_path(reward_id: reward.id), method: :post %></td>
-
       </tr>
     <% end %>
   </tbody>

@@ -23,6 +23,7 @@
           <li><%="The number of available kudos is #{current_employee.number_of_available_kudos}"%></li>
           <li><%="The number of available points is #{current_employee.available_points}"%></li>
           <li><%= link_to 'Rewards', rewards_path %></li>
+          <li><%= link_to 'My rewards', my_rewards_path %></li>
           <li><%= link_to 'Log out', destroy_employee_session_path, method: :delete %></li>
         <% elsif admin_signed_in?%>
           <li><%= link_to 'Log out', destroy_admin_session_path, method: :delete %></li>
