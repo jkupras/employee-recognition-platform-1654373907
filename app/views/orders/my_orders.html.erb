@@ -1,0 +1,22 @@
+<h1>My rewards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Purchase time</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @my_orders.each do |my_order| %>
+      <tr>
+        <td><%=  my_order.reward.title %></td>
+        <td><%=  my_order.reward.description %></td>
+        <td><%=  my_order.created_at %></td>
+        <td><%=  my_order.amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
