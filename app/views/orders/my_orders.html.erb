@@ -10,12 +10,12 @@
     </tr>
   </thead>
   <tbody>
-    <% @my_rewards.each do |my_reward| %>
+    <% @my_orders.each do |my_order| %>
       <tr>
-        <td><%=  my_reward.reward.title %></td>
-        <td><%=  my_reward.reward.description %></td>
-        <td><%=  my_reward.created_at %></td>
-        <td><%=  my_reward.amount %></td>
+        <td><%=  my_order.reward.title %></td>
+        <td><%=  my_order.reward.description %></td>
+        <td><%=  my_order.created_at %></td>
+        <td><%=  my_order.amount %></td>
       </tr>
     <% end %>
   </tbody>
