@@ -15,9 +15,12 @@
         <td><%=  employee.email %></td>
         <td><%=  employee.password %></td>
         <td><%=  employee.number_of_available_kudos %></td>
+        <td><%= link_to 'Rewards list', admins_order_path(employee) %></td>
         <td><%= link_to 'Edit', edit_admins_employee_path(employee) %></td>
         <td><%= link_to 'Destroy', admins_employee_path(employee), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+
